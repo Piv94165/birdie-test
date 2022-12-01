@@ -1,4 +1,5 @@
 import * as express from "express";
+import { getAll } from "./event.controller";
 
 export const pingController = express.Router();
 
@@ -7,3 +8,5 @@ pingController.get('/hello', (_, res) => {
     greetings: 'Thank you for spending some time on this test. All the best 🙌'
   });
 });
+
+pingController.get('/test', getAll);
