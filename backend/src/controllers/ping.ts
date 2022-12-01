@@ -10,3 +10,5 @@ pingController.get('/hello', (_, res) => {
 });
 
 pingController.get('/test', getAll);
+
+//pingController.get(`/events/${recipient}`)
