@@ -1,10 +1,10 @@
 import * as express from "express";
-import { getAll } from "./controllers/event.controller";
-/* import { pingController } from "./controllers/ping"; */
+/* import { getAll } from "./controllers/event.controller"; */
+import { pingController } from "./controllers/ping";
 
 const app = express();
 
-/* app.use(pingController); */
+app.use(pingController);
 
 app.use(function (_, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
@@ -31,7 +31,11 @@ app.use(function (_, res, next) {
 };
 app.use(allowCrossDomain); */
 
-app.get('/test', getAll);
+/* app.get('/test', getAll); */
+
+/* import { eventController } from "./routes/events";
+
+app.use('/events', eventController) */
 
 
 export default app;

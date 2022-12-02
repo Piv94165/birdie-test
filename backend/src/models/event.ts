@@ -17,8 +17,13 @@ export module event {
     };
 
     export function getAllByCareRecipient(idRecipient: string, result: any) {
-        let query = `SELECT payload FROM birdietest.events where care_recipient_id=${idRecipient} ORDER BY timestamp DESC limit 10`;
-
+        let query =
+            `SELECT payload 
+        FROM birdietest.events 
+        where care_recipient_id='${idRecipient}' 
+        ORDER BY timestamp 
+        DESC 
+        limit 10`;
         sql.query(query, (err: any, res: any) => {
             if (err) {
                 console.log("error: ", err);
@@ -32,9 +37,11 @@ export module event {
     };
 
     export function getAllByCareRecipientInADay(req: { idRecipient: string, date: string }, result: any) {
-        let query = `SELECT payload FROM birdietest.events 
-                    where care_recipient_id=${req.idRecipient} and timestamp like ${req.date + '%'}
-                    ORDER BY timestamp DESC limit 10`;
+        let query =
+            `SELECT payload 
+        FROM birdietest.events 
+        where care_recipient_id='${req.idRecipient}' and timestamp like '${req.date + '%'}'
+        ORDER BY timestamp DESC limit 10`;
 
         sql.query(query, (err: any, res: any) => {
             if (err) {
