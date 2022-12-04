@@ -1,5 +1,4 @@
 import * as React from 'react';
-import CardMedia from '@mui/material/CardMedia';
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';

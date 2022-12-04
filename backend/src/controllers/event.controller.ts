@@ -12,6 +12,17 @@ export function getAll(_: any, res: any) {
     });
 };
 
+export function getDistinctCareRecipient(_: any, res: any) {
+    event.getDistinctCareRecipient(_, (err: any, data: any) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        else res.send(data);
+    });
+}
+
 export function getAllByCareRecipient(idRecipient: string, res: any) {
     event.getAllByCareRecipient(idRecipient, (err: any, data: any) => {
         if (err)

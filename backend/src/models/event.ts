@@ -16,6 +16,21 @@ export module event {
         });
     };
 
+    export function getDistinctCareRecipient(_: any, result: any) {
+        let query =
+            `SELECT distinct care_recipient_id FROM birdietest.events`;
+        sql.query(query, (err: any, res: any) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+            }
+
+            console.log("tutorials: ", res);
+            result(null, res);
+        });
+    };
+
     export function getAllByCareRecipient(idRecipient: string, result: any) {
         let query =
             `SELECT payload 
@@ -41,7 +56,7 @@ export module event {
             `SELECT payload 
         FROM birdietest.events 
         where care_recipient_id='${req.idRecipient}' and timestamp like '${req.date + '%'}'
-        ORDER BY timestamp DESC limit 10`;
+        ORDER BY timestamp ASC limit 10`;
 
         sql.query(query, (err: any, res: any) => {
             if (err) {
