@@ -1,5 +1,5 @@
 import * as express from "express";
-import { getAll, getAllByCareRecipient, getAllByCareRecipientInADay } from "./event.controller";
+import { getAll, getAllByCareRecipient, getAllByCareRecipientInADay, getDistinctDaysByCareRecipient } from "./event.controller";
 
 export const pingController = express.Router();
 
@@ -19,3 +19,5 @@ pingController.get('/test', getAll);
 pingController.get('/events/:id', (req, res) => getAllByCareRecipient(req.params.id, res));
 
 pingController.get('/events/:id/:date', (req, res) => getAllByCareRecipientInADay({ idRecipient: req.params.id, date: req.params.date }, res))
+
+pingController.get('/days/:id', (req, res) => getDistinctDaysByCareRecipient(req.params.id, res))

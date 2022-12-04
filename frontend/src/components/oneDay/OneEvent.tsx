@@ -37,6 +37,8 @@ export default function OneEvent(props: IOneEvent) {
         }
     }
 
+    console.log(props.type);
+
     return (
         <Card key={props.id} className={style['card']} sx={{ maxWidth: "100%" }}>
             <CardContent>
@@ -48,14 +50,27 @@ export default function OneEvent(props: IOneEvent) {
                     <Grid item xs={2}>
                         {icon}
                     </Grid>
-                    <Grid item xs={10}>
-                        <Typography gutterBottom variant="h6" component="div">
-                            {props.task}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {props.notes}
-                        </Typography>
-                    </Grid>
+                    {
+                        /* props.type !== "regular_medication_taken" ? */
+                        (props.notes !== undefined) || (props.task !== undefined) ?
+                            <Grid item xs={10}>
+                                <Typography gutterBottom variant="h6" component="div">
+                                    {props.task}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {props.notes}
+                                </Typography>
+                            </Grid>
+                            : <Grid item xs={10}>
+                                <Typography gutterBottom variant="h6" component="div">
+                                    {props.date.substring(11, 16)}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {props.type.replaceAll("_", " ")}
+                                </Typography>
+                            </Grid>
+                    }
+
                 </Grid>
             </CardContent>
         </Card>

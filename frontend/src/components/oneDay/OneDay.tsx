@@ -26,15 +26,16 @@ export default function OneDay(props: IDay) {
     const [events, setEvents] = useState<IEvent[]>([]);
 
     useEffect(() => {
-        api.get(`test`).then(res => {
+        api.get(`/events/df50cac5-293c-490d-a06c-ee26796f850d/${props.date}`).then(res => {
             const list_events = []
             const list_object = res.data;
             for (let i = 0; i < list_object.length; i++) {
                 list_events.push(JSON.parse(list_object[i]["payload"]));
             }
+            console.log(`${props.date} : ${list_events}`);
             setEvents(list_events);
         });
-    }, []);
+    }, [props.date]);
 
     return (
         <Card sx={{ width: "50vw", padding: "10px" }}>

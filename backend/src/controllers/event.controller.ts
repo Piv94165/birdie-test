@@ -33,3 +33,14 @@ export function getAllByCareRecipientInADay(req: { idRecipient: string, date: st
         else res.send(data);
     });
 }
+
+export function getDistinctDaysByCareRecipient(idRecipient: string, res: any) {
+    event.getDistinctDaysByCareRecipient(idRecipient, (err: any, data: any) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        else res.send(data);
+    });
+}
