@@ -9,8 +9,6 @@ export function doQuery(req: string, result: any) {
             result(null, err);
             return;
         }
-
-        console.log("tutorials: ", res);
         result(null, res);
     });
 };

@@ -24,7 +24,6 @@ function App() {
       api.get(`days/${careRecipient}`).then((res: any) => {
         const list_events = []
         const list_object = res.data;
-        console.log(list_object);
         for (let i = 0; i < list_object.length; i++) {
           list_events.push(list_object[i]["DAY"]);
         }

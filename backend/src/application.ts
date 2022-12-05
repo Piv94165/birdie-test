@@ -12,30 +12,6 @@ app.use(function (_, res, next) {
 
 app.use(pingController);
 
-/* app.use(express.methodOverride()); */
-
-// ## CORS middleware
-// 
-/* var allowCrossDomain = function (req: any, res: any, next: any) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-        res.send(200);
-    }
-    else {
-        next();
-    }
-};
-app.use(allowCrossDomain); */
-
-/* app.get('/test', getAll); */
-
-/* import { eventController } from "./routes/events";
-
-app.use('/events', eventController) */
 
 
 export default app;

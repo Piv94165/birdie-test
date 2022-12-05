@@ -34,7 +34,6 @@ export default function OneDay(props: IDay) {
                 for (let i = 0; i < list_object.length; i++) {
                     list_events.push(JSON.parse(list_object[i]["payload"]));
                 }
-                console.log(`${props.date} : ${list_events}`);
                 setEvents(list_events);
             });
         }
