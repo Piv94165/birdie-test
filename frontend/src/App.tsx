@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Box, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import style from './App.module.css';
 import api from './axios.instance';
@@ -44,35 +44,47 @@ function App() {
 
   return (
     <Box className={style['screen']}>
-      <FormControl fullWidth className={style['select']}>
-        <InputLabel id="select-care-recipient-label">Care recipient</InputLabel>
-        <Select
-          labelId="select-care-recipient"
-          id="select-care-recipient"
-          value={careRecipient}
-          label="A care recipient"
-          onChange={handleChangeCareRecipient}
-        >
-          {availableCareRecipients.map(r => {
-            return <MenuItem value={r}>{r}</MenuItem>
-          })}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth className={style['select']}>
-        <InputLabel id="select-day-label">Day</InputLabel>
-        <Select
-          labelId="select-day"
-          id="select-day"
-          value={day}
-          label="A day"
-          onChange={handleChangeDay}
-        >
-          {availableDays.map(day => {
-            return <MenuItem value={day}>{day}</MenuItem>
-          })}
-        </Select>
-      </FormControl>
-      <OneDay date={day} careRecipient={careRecipient} />
+      <Grid container
+        direction="row"
+        justifyContent="space-around"
+        alignItems="flex-start"
+      >
+        <Grid item >
+          <FormControl fullWidth className={style['select']}>
+            <InputLabel id="select-care-recipient-label">Care recipient</InputLabel>
+            <Select
+              labelId="select-care-recipient"
+              id="select-care-recipient"
+              value={careRecipient}
+              label="A care recipient"
+              onChange={handleChangeCareRecipient}
+            >
+              {availableCareRecipients.map(r => {
+                return <MenuItem value={r}>{r}</MenuItem>
+              })}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item >
+          <FormControl fullWidth className={style['select']}>
+            <InputLabel id="select-day-label">Day</InputLabel>
+            <Select
+              labelId="select-day"
+              id="select-day"
+              value={day}
+              label="A day"
+              onChange={handleChangeDay}
+            >
+              {availableDays.map(day => {
+                return <MenuItem value={day}>{day}</MenuItem>
+              })}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item >
+          <OneDay date={day} careRecipient={careRecipient} />
+        </Grid>
+      </Grid>
     </Box>
 
   );
