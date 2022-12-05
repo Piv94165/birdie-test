@@ -36,8 +36,6 @@ export default function OneEvent(props: IOneEvent) {
         }
     }
 
-    console.log(props.type);
-
     return (
         <Card key={props.id} className={style['card']} sx={{ maxWidth: "100%" }}>
             <CardContent>

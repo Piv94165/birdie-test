@@ -1,94 +1,42 @@
-import sql from "./db";
+import { doQuery } from "./query";
 
 export module event {
+
     export function getAll(_: any, result: any) {
-        let query = "SELECT payload FROM events limit 10";
-
-        sql.query(query, (err: any, res: any) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-
-            console.log("tutorials: ", res);
-            result(null, res);
-        });
+        return doQuery("SELECT payload FROM events limit 10", result);
     };
+
 
     export function getDistinctCareRecipient(_: any, result: any) {
-        let query =
-            `SELECT distinct care_recipient_id FROM birdietest.events`;
-        sql.query(query, (err: any, res: any) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-
-            console.log("tutorials: ", res);
-            result(null, res);
-        });
+        return doQuery(`SELECT distinct care_recipient_id FROM birdietest.events`, result)
     };
 
+
     export function getAllByCareRecipient(idRecipient: string, result: any) {
-        let query =
-            `SELECT payload 
+        return doQuery(`SELECT payload 
         FROM birdietest.events 
         where care_recipient_id='${idRecipient}' 
         ORDER BY timestamp 
         DESC 
-        limit 10`;
-        sql.query(query, (err: any, res: any) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-
-            console.log("tutorials: ", res);
-            result(null, res);
-        });
+        limit 100`, result);
     };
+
 
     export function getAllByCareRecipientInADay(req: { idRecipient: string, date: string }, result: any) {
-        let query =
-            `SELECT payload 
+        return doQuery(`SELECT payload 
         FROM birdietest.events 
         where care_recipient_id='${req.idRecipient}' and timestamp like '${req.date + '%'}'
-        ORDER BY timestamp ASC limit 10`;
-
-        sql.query(query, (err: any, res: any) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-
-            console.log("tutorials: ", res);
-            result(null, res);
-        });
+        ORDER BY timestamp ASC limit 100`, result);
     };
 
+
     export function getDistinctDaysByCareRecipient(idRecipient: string, result: any) {
-        let query =
-            `SELECT distinct(substr(timestamp,1,10)) as DAY 
+        return doQuery(`SELECT distinct(substr(timestamp,1,10)) as DAY 
         FROM birdietest.events 
         where care_recipient_id='${idRecipient}'
         ORDER BY timestamp 
         DESC 
-        limit 10`
-
-        sql.query(query, (err: any, res: any) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-
-            console.log("tutorials: ", res);
-            result(null, res);
-        });
+        limit 100`, result);
 
     }
 }

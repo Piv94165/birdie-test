@@ -50,7 +50,7 @@ function App() {
         alignItems="flex-start"
       >
         <Grid item >
-          <FormControl fullWidth className={style['select']}>
+          <FormControl fullWidth className={style['select']} sx={{ width: "300px" }}>
             <InputLabel id="select-care-recipient-label">Care recipient</InputLabel>
             <Select
               labelId="select-care-recipient"
@@ -66,7 +66,7 @@ function App() {
           </FormControl>
         </Grid>
         <Grid item >
-          <FormControl fullWidth className={style['select']}>
+          <FormControl fullWidth className={style['select']} sx={{ width: "300px" }}>
             <InputLabel id="select-day-label">Day</InputLabel>
             <Select
               labelId="select-day"
