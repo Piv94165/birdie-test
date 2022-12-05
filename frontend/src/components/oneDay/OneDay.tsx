@@ -27,7 +27,7 @@ export default function OneDay(props: IDay) {
     const [events, setEvents] = useState<IEvent[]>([]);
 
     useEffect(() => {
-        if (props.careRecipient !== "") {
+        if (props.careRecipient !== "" && props.date !== "") {
             api.get(`/events/${props.careRecipient}/${props.date}`).then(res => {
                 const list_events = []
                 const list_object = res.data;
@@ -39,7 +39,7 @@ export default function OneDay(props: IDay) {
             });
         }
 
-    }, [props.date]);
+    }, [props.date, props.careRecipient]);
 
     return (
         <Card sx={{ width: "50vw", padding: "10px" }}>
